@@ -1,0 +1,30 @@
+.seat {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.seat:hover:not(:disabled) {
+  background-color: #e3f2fd;
+  transform: scale(1.1);
+}
+
+.seat.booked {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: #2196f3;
+  color: white;
+  border-color: #1976d2;
+}
+
+.seat:disabled {
+  cursor: not-allowed;
+} 
