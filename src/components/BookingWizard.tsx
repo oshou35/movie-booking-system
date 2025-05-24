@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/BookingWizard.css';
+import avengersImage from '../assets/images/avengers.jpg';
+import totoroImage from '../assets/images/totoro.jpg';
+import starwarsImage from '../assets/images/starwars.jpg';
 
 // 映画データ
 const movies = [
@@ -7,21 +10,21 @@ const movies = [
     id: 1, 
     title: 'アベンジャーズ', 
     price: 1800,
-    image: 'https://via.placeholder.com/300x450',
+    image: avengersImage,
     description: 'マーベルヒーローたちが集結する大作アクション映画'
   },
   { 
     id: 2, 
     title: 'となりのトトロ', 
     price: 1500,
-    image: 'https://via.placeholder.com/300x450',
+    image: totoroImage,
     description: 'ジブリスタジオが贈る心温まるファンタジー作品'
   },
   { 
     id: 3, 
     title: 'スター・ウォーズ', 
     price: 1800,
-    image: 'https://via.placeholder.com/300x450',
+    image: starwarsImage,
     description: 'SF映画の金字塔、壮大な宇宙叙事詩'
   }
 ];
@@ -40,7 +43,7 @@ const bookedSeats = ['A3', 'B5', 'C7', 'D2'];
 const MovieSelection = ({ onSelect, selectedMovie }: { onSelect: (id: number) => void, selectedMovie: number | null }) => (
   <div className="step-content">
     <h2>映画を選択してください</h2>
-    <div className="movie-grid">
+    <div className="movie-list">
       {movies.map(movie => (
         <div 
           key={movie.id} 
@@ -48,9 +51,15 @@ const MovieSelection = ({ onSelect, selectedMovie }: { onSelect: (id: number) =>
           onClick={() => onSelect(movie.id)}
         >
           <img src={movie.image} alt={movie.title} />
-          <h3>{movie.title}</h3>
-          <p>{movie.description}</p>
-          <p className="price">¥{movie.price.toLocaleString()}</p>
+          <div className="movie-info">
+            <div className="movie-details">
+              <h3>{movie.title}</h3>
+              <p>{movie.description}</p>
+            </div>
+            <div className="movie-price">
+              <p className="price">¥{movie.price.toLocaleString()}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>
